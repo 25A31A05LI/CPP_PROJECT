@@ -39,17 +39,12 @@ int main() {
                 if (currentText.empty()) {
                     cout << "Nothing to delete!\n";
                 } else {
-                    // Save current state for undo
                     undoStack.push(currentText);
-
-                    // Remove last word
                     size_t pos = currentText.find_last_of(' ');
                     if (pos == string::npos)
                         currentText = "";
                     else
                         currentText = currentText.substr(0, pos);
-
-                    // Clear redo stack
                     while (!redoStack.empty()) redoStack.pop();
 
                     cout << "Last word deleted successfully!\n";
